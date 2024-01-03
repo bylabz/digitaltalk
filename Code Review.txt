@@ -1,0 +1,39 @@
+1. I prefer to move all businnes logic to seperate file, usually I use Service pattern to seperate business logic.
+    It can make easly if we sparate code into some pattern when in future we want to improve or scale the code.
+    for example :
+    - https://github.com/bylabz/digitaltalk/blob/e215b7bcab5352f21fb619c794e2472bfa331b1f/refactor/app/Http/Controllers/BookingController.php#L36
+    - https://github.com/bylabz/digitaltalk/blob/e215b7bcab5352f21fb619c794e2472bfa331b1f/refactor/app/Http/Controllers/BookingController.php#L195
+2. It's important to add validation in every request that will we use, we can belive for each value that client input in our app.
+    I usually use DTO pattern to handle request also add laravel validation.
+    for example : 
+    - https://github.com/bylabz/digitaltalk/blob/e215b7bcab5352f21fb619c794e2472bfa331b1f/refactor/app/Http/Controllers/BookingController.php#L97
+    - https://github.com/bylabz/digitaltalk/blob/e215b7bcab5352f21fb619c794e2472bfa331b1f/refactor/app/Http/Controllers/BookingController.php#L112
+3. We can use model binding in route to simplify logic  
+    for example :
+    - https://github.com/bylabz/digitaltalk/blob/e215b7bcab5352f21fb619c794e2472bfa331b1f/refactor/app/Http/Controllers/BookingController.php#L135
+4. I usually combine between Repository pattern and Service Pattern, for Repository pattern only for query to database and the logic will in Service.
+    for example : 
+    - https://github.com/bylabz/digitaltalk/blob/e215b7bcab5352f21fb619c794e2472bfa331b1f/refactor/app/Repository/BookingRepository.php#L128
+5. I usually use laravel transform / API Resources if we  need a transformation layer that sits between your Eloquent models and the JSON responses.
+    for example :
+    - https://github.com/bylabz/digitaltalk/blob/e215b7bcab5352f21fb619c794e2472bfa331b1f/refactor/app/Repository/BookingRepository.php#L327
+6. I avoid queries/Eloquent in interaction, I prefer use  Eager Loading or query builder to query
+    for example : 
+    - https://github.com/bylabz/digitaltalk/blob/e215b7bcab5352f21fb619c794e2472bfa331b1f/refactor/app/Repository/BookingRepository.php#L464-L468
+7. It's good think to use job for this logic
+    for example :
+    - https://github.com/bylabz/digitaltalk/blob/e215b7bcab5352f21fb619c794e2472bfa331b1f/refactor/app/Repository/BookingRepository.php#L495C61-L495C61
+8. We need to use database transaction if we have logic that need create/update in more than 1 record to make data consistent.
+    for example : 
+    - https://github.com/bylabz/digitaltalk/blob/e215b7bcab5352f21fb619c794e2472bfa331b1f/refactor/app/Repository/BookingRepository.php#L741
+9. We should remove unnecessary comment/code and not just comment. we need to make clean our code.
+    for example :
+    - https://github.com/bylabz/digitaltalk/blob/e215b7bcab5352f21fb619c794e2472bfa331b1f/refactor/app/Repository/BookingRepository.php#L848
+10. Type hinting is a crucial concept that greatly enhances code readability, and maintainability, and reduces potential bugs. 
+    for example :
+    - almost in every function don't have it
+11. I prefer to use query builder instead of Eloquent if I expect array return and not in object, It will cost a lot resource when use Eloquent if the data is large.
+    for example :
+    - https://github.com/bylabz/digitaltalk/blob/e215b7bcab5352f21fb619c794e2472bfa331b1f/refactor/app/Repository/BookingRepository.php#L1683
+12. We must follow Best practices with PSR Standards
+13. We should implement SOLID principles, It will make our code better, easier to maintenance, flexible, reusable, and  extendable.
